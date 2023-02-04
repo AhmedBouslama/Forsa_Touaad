@@ -35,6 +35,12 @@ class Produit
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $Category = null;
 
+    #[ORM\Column]
+    private ?float $Prix_Debut_enchere = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $prix_BuyOut = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +126,30 @@ class Produit
     public function setCategory(?Category $Category): self
     {
         $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getPrixDebutEnchere(): ?float
+    {
+        return $this->Prix_Debut_enchere;
+    }
+
+    public function setPrixDebutEnchere(float $Prix_Debut_enchere): self
+    {
+        $this->Prix_Debut_enchere = $Prix_Debut_enchere;
+
+        return $this;
+    }
+
+    public function getPrixBuyOut(): ?float
+    {
+        return $this->prix_BuyOut;
+    }
+
+    public function setPrixBuyOut(?float $prix_BuyOut): self
+    {
+        $this->prix_BuyOut = $prix_BuyOut;
 
         return $this;
     }
